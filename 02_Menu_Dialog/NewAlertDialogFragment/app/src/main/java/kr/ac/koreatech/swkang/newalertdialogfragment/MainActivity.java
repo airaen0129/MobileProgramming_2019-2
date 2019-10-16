@@ -39,9 +39,10 @@ public class MainActivity extends AppCompatActivity {
 
     public static class ColorDialogFragment extends DialogFragment {
         int choice = -1;
+        final CharSequence[] items = {"Red", "Green", "Blue"};
+
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            final CharSequence[] items = {"Red", "Green", "Blue"};
 
             AlertDialog.Builder builderRadio = new AlertDialog.Builder(getActivity());
             builderRadio.setTitle("색상을 선택하시오")
