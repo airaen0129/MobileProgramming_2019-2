@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +37,39 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public static class ColorDialogFragment extends DialogFragment {
+        int choice = -1;
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            final CharSequence[] items = {"Red", "Green", "Blue"};
+
+            AlertDialog.Builder builderRadio = new AlertDialog.Builder(getActivity());
+            builderRadio.setTitle("색상을 선택하시오")
+                    .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int item) {
+                            //Toast.makeText(getActivity(), items[item], Toast.LENGTH_SHORT).show();
+                            choice = item;
+                        }
+                    })
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(getActivity(), items[choice], Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+
+            AlertDialog alertRadio = builderRadio.create();
+            return alertRadio;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +90,14 @@ public class MainActivity extends AppCompatActivity {
                 // FragmentManager: public abstract class
                 // android.app.FragmentManager
                 // Interface for interacting with Fragment objects inside of an Activity
+            }
+        });
+
+        Button b2 = findViewById(R.id.dialogForRadioButton);
+        b2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                DialogFragment frag = new ColorDialogFragment();
+                frag.show(getFragmentManager(), "ColorDialog");
             }
         });
     }

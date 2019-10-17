@@ -20,8 +20,9 @@
             android:label="abcdedfg">
         </activity>
 
-        <!--<activity android:name=".MemoWriteActivity">
-        </activity>-->
+        <activity android:name=".MemoWriteActivity"
+            android:label="MemoWrite">
+        </activity>
     </application>
 
 </manifest>
