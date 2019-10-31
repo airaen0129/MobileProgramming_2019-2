@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 TimePickerFragment tpf = new TimePickerFragment();
                 tpf.setTextView(timeText);
                 tpf.show(getFragmentManager(), "timePicker");
-            }
+        }
         });
     }
 }

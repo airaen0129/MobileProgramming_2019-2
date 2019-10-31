@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.radio_red:
                 if(checked)
-                    Toast.makeText(getApplicationContext(), ((RadioButton) view).getText(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), ((RadioButton) view).getText().toString(), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.radio_blue:
                 if(checked)

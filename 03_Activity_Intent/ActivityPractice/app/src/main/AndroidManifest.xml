@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MemoTextActivity"
-            android:label="abcdedfg">
+            android:label="Memo Text">
         </activity>
 
         <activity android:name=".MemoWriteActivity"
