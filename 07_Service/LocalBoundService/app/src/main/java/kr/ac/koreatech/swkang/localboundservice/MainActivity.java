@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         // Service의 onBind() 메소드에서 반환한 IBinder 객체를 받음 (두번째 인자)
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            Log.d("MainActivity", "onServiceConnected()");
+            Log.d("MobileProgramming", "MainActivity - onServiceConnected()");
 
             // 두번째 인자로 넘어온 IBinder 객체를 LocalService 클래스에 정의된 LocalBinder 클래스 객체로 캐스팅
             LocalService.LocalBinder binder = (LocalService.LocalBinder)service;
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         // Service 연결 해제되었을 때 호출되는 callback 메소드
         @Override
         public void onServiceDisconnected(ComponentName name) {
-            Log.d("MainActivity", "onServiceDisconnected()");
+            Log.d("MobileProgramming", "MainActivity - onServiceDisconnected()");
 
             mBound = false;
         }
@@ -48,11 +48,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Log.d("MobileProgramming", "MainActivity - onCreate()");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+
+        Log.d("MobileProgramming", "MainActivity - onStart()");
 
         // 연결할 Service를 위한 Intent 객체 생성
         Intent intent = new Intent(this, LocalService.class);
@@ -65,10 +69,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
+        Log.d("MobileProgramming", "MainActivity - onStop()");
+
         if(mBound) {
             unbindService(mConnection);
             mBound = false;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("MobileProgramming", "MainActivity - onDestroy()");
     }
 
     // 버튼이 클릭되면 호출
