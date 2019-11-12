@@ -24,7 +24,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="13dp"
-        android:id="@+id/checkBox" />
+        android:id="@+id/checkBox"
+        android:saveEnabled="false" />
 
     <CheckBox
         android:text="스파게티"
@@ -44,6 +45,7 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/count"
         android:textSize="24sp" />
+    <!--android:freezesText="true"-->
 
     <Button
         android:text="증가"

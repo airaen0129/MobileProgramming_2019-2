@@ -2,6 +2,7 @@ package kr.ac.koreatech.swkang.countrestore;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -35,5 +36,20 @@ public class MainActivity extends AppCompatActivity {
                 countText.setText("현재 개수 = " + count);
             }
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt("Count", count);
+    }
+
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        count = savedInstanceState.getInt("Count");
+
+        countText.setText("현재 개수 = " + count);
     }
 }
