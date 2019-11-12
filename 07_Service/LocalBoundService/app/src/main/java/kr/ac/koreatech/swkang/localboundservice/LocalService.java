@@ -27,10 +27,17 @@ public class LocalService extends Service {
     // Service 연결이 되었을 때 호출되는 메소드
     @Override
     public IBinder onBind(Intent intent) {
-        Log.d("LocalService", "onBind()");
+        Log.d("MobileProgramming", "LocalService - onBind()");
 
         // 위에서 생성한 LocalBinder 객체를 반환
         return mBinder;
+    }
+
+    @Override
+    public boolean onUnbind(Intent intent) {
+        Log.d("MobileProgramming", "LocalService - onUnbind()");
+
+        return false;
     }
 
     private final Random mGenerator = new Random();
@@ -43,4 +50,14 @@ public class LocalService extends Service {
     //*****************************
     // 바인딩된 서비스는 모든 연결이 해제되면 Android 시스템이 서비스를 자동으로 소멸시킴
     // 따라서 서비스가 순전히 바인딩된 서비스인 경우 해당 서비스의 생명주기를 관리하지 않아도 됨
+
+    @Override
+    public void onCreate() {
+        Log.d("MobileProgramming", "LocalService - onCreate()");
+    }
+
+    @Override
+    public void onDestroy() {
+        Log.d("MobileProgramming", "LocalService - onDestroy()");
+    }
 }
